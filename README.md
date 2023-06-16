@@ -1,3 +1,15 @@
+Q1:
+
+To run the manifests, command is given below
+
+kubectl apply -f automatanode.yml -f chaindata-pv.yml -f chaindata-pvc.yml
+
+
+I have created the persistent Volume and claim storage to store the data in case pod getting down so that data remains persistence!
+
+
+
+
 Q2:-
 
 
