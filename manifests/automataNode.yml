@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: automatanode
+  labels:
+    app: automatanode
+spec:
+  serviceName: automatanode
+  replicas: 2
+  selector:
+    matchLabels:
+      app: automatanode
+  template:
+    metadata:
+      labels:
+        app: automatanode
+    spec:
+      terminationGracePeriodSeconds: 300
+      containers:
+      - name: automatanode
+        image: atactr/automata:contextfree-v0.1.0-rc4 
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9933
+          name: http-request
+        - containerPort: 9944
+          name: websocket-req
+        - containerPort: 30333
+          name: tcp-p2p
+        command: 
+          - /bin/bash
+          - -c
+          - "-v /chain/data"
+          - "-u $(id -u ${USER}):$(id -g ${USER}) --node-type full --name demo786"
+        resources:
+          requests:
+            cpu: 100m
+        volumeMounts:
+          - name: chaindata-storage
+            mountPath: /chain/data
+      volumes:
+      - name: chaindata-storage
+        persistentVolumeClaim:
+          claimName: chaindata-pvc

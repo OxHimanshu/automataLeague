@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: chaindata-pv
+  labels:
+     name: chaindata-pv
+spec:
+  storageClassName: ''
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  awsElasticBlockStore:
+    volumeID: vol-082c078e9273325d3
+    fsType: ext4
