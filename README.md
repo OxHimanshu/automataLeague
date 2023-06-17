@@ -1,16 +1,19 @@
-Q1:
+_**Q1:**_
+
 
 To run the manifests, command is given below
 
-kubectl apply -f automatanode.yml -f chaindata-pv.yml -f chaindata-pvc.yml
+**kubectl apply -f automatanode.yml -f chaindata-pv.yml -f chaindata-pvc.yml**
 
 
-I have created the persistent Volume and claim storage to store the data in case pod getting down so that data remains persistence!
+I have created the persistent Volume and claim storage to store the data in case pod getting down so that data remains persistence! So, I have created the **static provisioning** to make data persistence and for Volume persistence already and EBS deployed on AWS by volume-ID: '**vol-082c078e9273325d3**' as mentioned in **chaindata-pv.yml**
+
+And to claim that persistence Volume, created a fle name **chaindata-pvc.yml**
 
 
 
 
-Q2:-
+_**Q2:-**_
 
 
 
@@ -27,6 +30,6 @@ The change failure rate should be 0-2% so there is any failure order detected, i
 
 
 
-Q3:-  
+_**Q3:-  **_
 
 I tried to run the docker image on my local and it is working fine for me. kindly check it!
